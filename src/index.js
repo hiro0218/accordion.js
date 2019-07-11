@@ -1,4 +1,4 @@
-export default class Accordion {
+export class Accordion {
   constructor(elDefault, elAlone) {
     this.elAccordions = elDefault || document.querySelectorAll(['data-accordion=""']);
     this.elAccordionsAlone = elAlone || document.querySelectorAll('[data-accordion="alone"]');

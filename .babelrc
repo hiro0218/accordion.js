@@ -4,14 +4,18 @@
       "presets": [
         "@babel/preset-env"
       ],
-      "plugins": ["@babel/plugin-transform-modules-umd"]
+      "plugins": [
+        ["@babel/plugin-transform-modules-umd"]
+      ]
     },
     "production": {
       "presets": [
         "@babel/preset-env",
         "minify"
       ],
-      "plugins": ["@babel/plugin-transform-modules-umd"]
+      "plugins": [
+        ["@babel/plugin-transform-modules-umd"]
+      ]
     }
   }
 }
