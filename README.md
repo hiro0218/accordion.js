@@ -60,3 +60,10 @@ Opening and closing interlocks.
   }
 }
 ```
+
+### JS
+
+```js
+import Accordion from '@hiro0218/accordion.js';
+new Accordion();
+```
