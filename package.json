@@ -30,6 +30,7 @@
   "devDependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",
+    "@babel/plugin-transform-modules-umd": "^7.2.0",
     "@babel/preset-env": "^7.5.4",
     "@hiro0218/eslint-config": "^1.0.4",
     "@hiro0218/prettier-config": "^1.0.1",
