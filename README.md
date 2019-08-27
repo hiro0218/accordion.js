@@ -10,23 +10,8 @@ npm install -D @hiro0218/accordion.js
 
 ### HTML
 
-Opening and closing moves independently.
-
 ```html
 <div data-accordion>
-  <h2 data-accordion-header aria-expanded="false">TITLE</h2>
-  <div data-accordion-container>
-    CONTENTS
-  </div>
-</div>
-```
-
----
-
-Opening and closing interlocks.
-
-```html
-<div data-accordion="alone">
   <h2 data-accordion-header aria-expanded="false">TITLE</h2>
   <div data-accordion-container>
     CONTENTS
@@ -46,7 +31,7 @@ Opening and closing interlocks.
   [data-accordion-container] {
     overflow-y: hidden;
     max-height: 0;
-    transition: max-height 0.6s ease;
+    transition: max-height 0.1s linear;
   }
 
   // close
@@ -56,6 +41,7 @@ Opening and closing interlocks.
   [aria-expanded="true"] {
     & ~ [data-accordion-container] {
       max-height: 200vh;
+      transition: max-height 0.6s ease;
     }
   }
 }
@@ -66,4 +52,15 @@ Opening and closing interlocks.
 ```js
 import Accordion from '@hiro0218/accordion.js';
 new Accordion();
+```
+
+```js
+// Opening and closing moves independently.
+new Accordion(document.querySelectorAll(".accordion-default [data-accordion]"));
+
+// Opening and closing interlocks.
+new Accordion(
+  document.querySelectorAll(".accordion-interlocking [data-accordion]"),
+  true
+);
 ```

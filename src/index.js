@@ -1,36 +1,33 @@
 export default class Accordion {
-  constructor(elDefault, elAlone) {
-    this.elAccordions = elDefault || document.querySelectorAll('[data-accordion=""]');
-    this.elAccordionsAlone = elAlone || document.querySelectorAll('[data-accordion="alone"]');
+  constructor(elDefault, interlocking = false) {
+    this.elAccordions = elDefault || document.querySelectorAll('[data-accordion]');
+    this.interlocking = interlocking;
 
-    // normal
     Array.from(this.elAccordions, elAccordion => {
-      this.eventHandler(elAccordion);
-    });
-
-    // alone
-    Array.from(this.elAccordionsAlone, elAccordion => {
       this.eventHandler(elAccordion);
     });
   }
 
   eventHandler(elAccordion) {
     const elHeader = elAccordion.querySelector('[data-accordion-header]');
-    const enableAloneOption = elAccordion.dataset.accordion === 'alone';
 
-    elHeader.addEventListener('click', e => {
-      e.preventDefault();
+    elHeader.addEventListener('click', () => {
       this.toggleAriaExpanded(elHeader);
 
-      // data-accordion が alone
-      if (!enableAloneOption) return;
-      Array.from(this.elAccordionsAlone, el => {
-        if (elAccordion === el) return;
-        const elAloneHeader = el.querySelector('[data-accordion-header]');
-        if (elAloneHeader.getAttribute('aria-expanded') === 'true') {
-          this.toggleAriaExpanded(elAloneHeader);
-        }
-      });
+      // 連動式
+      if (this.interlocking) {
+        // インスタンス時に取得したアコーディオン要素を精査する
+        Array.from(this.elAccordions, el => {
+          // クリックした要素だったら抜ける
+          if (elAccordion === el) return;
+
+          // アコーディオンのヘッダーを取得
+          const elAloneHeader = el.querySelector('[data-accordion-header]');
+          if (elAloneHeader.getAttribute('aria-expanded') === 'true') {
+            this.toggleAriaExpanded(elAloneHeader);
+          }
+        });
+      }
     });
   }
 
