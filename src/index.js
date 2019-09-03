@@ -1,15 +1,12 @@
 export default class Accordion {
   constructor(elDefault, interlocking = false) {
-    this.event = "ontouchstart" in window ? "touchstart" : "click";
+    this.event = 'ontouchstart' in window ? 'touchstart' : 'click';
 
-    this.elAccordions =
-      elDefault || document.querySelectorAll("[data-accordion]");
+    this.elAccordions = elDefault || document.querySelectorAll('[data-accordion]');
     this.interlocking = interlocking;
 
     for (let i = 0; i < this.elAccordions.length; i++) {
-      const elHeader = this.elAccordions[i].querySelector(
-        "[data-accordion-header]"
-      );
+      const elHeader = this.elAccordions[i].querySelector('[data-accordion-header]');
       this.eventHandler(elHeader);
     }
   }
@@ -17,9 +14,6 @@ export default class Accordion {
   eventHandler(elHeader) {
     elHeader.addEventListener(this.event, e => {
       e.preventDefault();
-
-      // const nextElement = e.target.nextElementSibling;
-      // nextElement.classList.toggle("is-animated");
 
       this.toggleAriaExpanded(elHeader);
 
@@ -31,13 +25,9 @@ export default class Accordion {
           if (e.target.parentNode === this.elAccordions[i]) continue;
 
           // アコーディオンのヘッダーを取得
-          const elAloneHeader = this.elAccordions[i].querySelector(
-            "[data-accordion-header]"
-          );
-          // const nextElement = elAloneHeader.nextElementSibling;
-          // nextElement.classList.toggle("is-animated");
+          const elAloneHeader = this.elAccordions[i].querySelector('[data-accordion-header]');
 
-          if (elAloneHeader.getAttribute("aria-expanded") === "true") {
+          if (elAloneHeader.getAttribute('aria-expanded') === 'true') {
             this.toggleAriaExpanded(elAloneHeader);
           }
         }
@@ -46,9 +36,6 @@ export default class Accordion {
   }
 
   toggleAriaExpanded(element) {
-    element.setAttribute(
-      "aria-expanded",
-      element.getAttribute("aria-expanded") === "true" ? "false" : "true"
-    );
+    element.setAttribute('aria-expanded', element.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
   }
 }
