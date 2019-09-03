@@ -14,12 +14,18 @@
     "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
     "prepare": "npm run clean && npm run lint && npm run build"
   },
-  "files": ["lib", "src"],
+  "files": [
+    "lib",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hiro0218/accordion.js.git"
   },
-  "keywords": ["accordion", "javascript"],
+  "keywords": [
+    "accordion",
+    "javascript"
+  ],
   "author": "hiro <hiro0218@gmail.com>",
   "license": "MIT",
   "devDependencies": {
@@ -35,9 +41,11 @@
     "eslint": "^5.16.0",
     "husky": "^3.0.0",
     "lint-staged": "^9.2.0",
-    "prettier": "^1.18.2",
+    "node-sass": "^4.12.0",
     "parcel-bundler": "^1.6.1",
-    "rimraf": "^2.6.3"
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "sass": "^1.22.10"
   },
   "husky": {
     "hooks": {
@@ -45,7 +53,11 @@
     }
   },
   "lint-staged": {
-    "**/*.js": ["eslint --fix", "eslint", "git add"]
+    "**/*.js": [
+      "eslint --fix",
+      "eslint",
+      "git add"
+    ]
   },
   "bugs": {
     "url": "https://github.com/hiro0218/accordion.js/issues"

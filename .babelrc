@@ -1,0 +1,39 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "esmodules": false
+            },
+            "modules": false,
+          }
+        ]
+      ],
+      "plugins": [
+        ["@babel/plugin-transform-modules-umd"],
+      ],
+      "moduleId": "Accordion"
+    },
+    "production": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "esmodules": false
+            },
+            "modules": false,
+          }
+        ],
+        "minify"
+      ],
+      "plugins": [
+        ["@babel/plugin-transform-modules-umd"]
+      ],
+      "moduleId": "Accordion"
+    }
+  }
+}
