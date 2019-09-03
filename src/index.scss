@@ -2,6 +2,12 @@
 // base
 // ----------
 
+*,
+*::before,
+*::after {
+  box-sizing:border-box;
+}
+
 body {
   padding: 8vh 4vw;
   font-family: "Noto Sans JP", sans-serif;
@@ -22,37 +28,6 @@ ul {
 
 section + section {
   margin-top: 5rem;
-}
-
-.is-animated {
-  animation: fedeIn 0.8s normal ease-in-out both 1; 
-}
-
-@keyframes fedeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity:1;
-  }
-}
-
-.accordion-interlocking {
-  [data-accordion] {
-    // close
-    [aria-expanded="false"] {
-      &::after {
-        content: "+";
-      }
-    }
-  
-    // open
-    [aria-expanded="true"] {
-      &::after {
-        content: "-";
-      }
-    }
-  }  
 }
 
 //
@@ -98,25 +73,25 @@ section + section {
   [data-accordion-container] {
     overflow-y: hidden;
     max-height: 0;
-    transition: max-height 0.1s linear;
+    transition: max-height 0.2s;
   }
 
   // close
   [aria-expanded="false"] {
     &::after {
-      content: "▲";
+      content: "+";
     }
   }
 
   // open
   [aria-expanded="true"] {
     &::after {
-      content: "▼";
+      content: "-";
     }
 
     & ~ [data-accordion-container] {
       max-height: 200vh;
-      transition: max-height 0.6s linear;
+      transition: max-height 0.8s linear;
     }
   }
 }

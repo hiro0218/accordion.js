@@ -18,8 +18,8 @@ export default class Accordion {
     elHeader.addEventListener(this.event, e => {
       e.preventDefault();
 
-      const nextElement = e.target.nextElementSibling;
-      nextElement.classList.toggle("is-animated");
+      // const nextElement = e.target.nextElementSibling;
+      // nextElement.classList.toggle("is-animated");
 
       this.toggleAriaExpanded(elHeader);
 
@@ -34,8 +34,8 @@ export default class Accordion {
           const elAloneHeader = this.elAccordions[i].querySelector(
             "[data-accordion-header]"
           );
-          const nextElement = elAloneHeader.nextElementSibling;
-          nextElement.classList.toggle("is-animated");
+          // const nextElement = elAloneHeader.nextElementSibling;
+          // nextElement.classList.toggle("is-animated");
 
           if (elAloneHeader.getAttribute("aria-expanded") === "true") {
             this.toggleAriaExpanded(elAloneHeader);
